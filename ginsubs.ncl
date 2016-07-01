@@ -5,7 +5,7 @@
 		<regionBase>
 			<region id="videoR" width="100%" height="100%"/>
 			<region id="ccR" width="50" height="50" top="20" left="20" zIndex="1"/>	
-			<region id="appR" width="100%" height="20%" bottom="0" zIndex="1"/>
+			<region id="appR" width="100%" height="10%" bottom="0" zIndex="1"/>
 		</regionBase>
 		
 		<descriptorBase>
@@ -16,8 +16,9 @@
 		
 		<connectorBase>
 			<causalConnector id="onSelectionStart">
-				<simpleCondition role="onSelection" />
-				<simpleAction role="start" />
+				<connectorParam name="key"/>
+                <simpleCondition role="onSelection" key="$key"/>
+                <simpleAction role="start"/>
 			</causalConnector>
 		</connectorBase>
 	</head>
@@ -31,5 +32,16 @@
 		<media id="ccImage" src="media/images/cc.png" descriptor="ccD"/>
 		<media id="video" src="media/videos/video.avi" descriptor="videoD"/>
 		<media id="app" src="media/lua/ginsubs.lua" descriptor="appD"/>
+		<media id="keys" type="application/x-ginga-settings">
+            <property name="channel.keyCapture" value="colored_keys,selection_keys,cursor_keys,numeric_keys"/>
+        </media>
+        
+		<!-- Links -->
+		<link xconnector="onSelectionStart">
+			<bind role="onSelection" component="ccImage">
+                <bindParam name="key" value="RED"/>
+            </bind>
+            <bind role="start" component="app"/>
+		</link>
 	</body>
 </ncl>
