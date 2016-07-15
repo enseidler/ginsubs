@@ -15,12 +15,12 @@
 		</descriptorBase>
 		
 		<connectorBase>
-			<causalConnector id="onSelectionStart">
-				<connectorParam name="key"/>
-                <simpleCondition role="onSelection" key="$key"/>
-                <simpleAction role="start"/>
+			<causalConnector id="onBeginStart">
+				<simpleCondition role="onBegin" />
+				<simpleAction role="start" />
 			</causalConnector>
 		</connectorBase>
+		
 	</head>
 
 	<body>
@@ -37,11 +37,9 @@
         </media>
         
 		<!-- Links -->
-		<link xconnector="onSelectionStart">
-			<bind role="onSelection" component="ccImage">
-                <bindParam name="key" value="RED"/>
-            </bind>
-            <bind role="start" component="app"/>
+		<link xconnector="onBeginStart">
+			<bind role="onBegin" component="video"/>
+			<bind role="start" component="app"/>
 		</link>
 	</body>
 </ncl>
