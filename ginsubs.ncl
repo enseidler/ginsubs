@@ -4,12 +4,16 @@
 	<head>
 		<regionBase>
 			<region id="videoR" width="100%" height="100%"/>
-			<region id="ccR" width="50" height="50" top="20" left="20" zIndex="1"/>	
-			<region id="appR" width="100%" height="10%" bottom="0" zIndex="1"/>
+			<region id="rewindR" width="40" height="20" left="10" top="10" zIndex="1"/>
+			<region id="resetR" width="40" height="20" left="52" top="10" zIndex="1"/>
+			<region id="forwardR" width="40" height="20" left="94" top="10" zIndex="1"/>	
+			<region id="appR" width="100%" height="15%" bottom="0" zIndex="1"/>
 		</regionBase>
 		
 		<descriptorBase>
-			<descriptor id="ccD" region="ccR"/>
+			<descriptor id="rewindD" region="rewindR"/>
+			<descriptor id="resetD" region="resetR"/>
+			<descriptor id="forwardD" region="forwardR"/>
 			<descriptor id="videoD" region="videoR"/>
 			<descriptor id="appD" region="appR"/>
 		</descriptorBase>
@@ -25,12 +29,16 @@
 
 	<body>
 		<!-- Start Visualization -->
-		<port id="ccP" component="ccImage"/>
+		<port id="rewindP" component="rewindButton"/>
+		<port id="resetP" component="resetButton"/>
+		<port id="forwardP" component="forwardButton"/>
 		<port id="videoP" component="video"/>
 		
 		<!-- Media -->
-		<media id="ccImage" src="media/images/cc.png" descriptor="ccD"/>
-		<media id="video" src="media/videos/video.avi" descriptor="videoD"/>
+		<media id="rewindButton" src="media/images/rewind.png" descriptor="rewindD"/>
+		<media id="resetButton" src="media/images/reset.png" descriptor="resetD"/>
+		<media id="forwardButton" src="media/images/forward.png" descriptor="forwardD"/>
+		<media id="video" src="media/videos/american_dad.mp4" descriptor="videoD"/>
 		<media id="app" src="media/lua/ginsubs.lua" descriptor="appD"/>
 		<media id="keys" type="application/x-ginga-settings">
             <property name="channel.keyCapture" value="colored_keys,selection_keys,cursor_keys,numeric_keys"/>

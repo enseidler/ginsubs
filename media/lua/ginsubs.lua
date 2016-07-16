@@ -33,13 +33,13 @@ end
 
 
 function startSubs()
-  loadFile("media/subs/subseng.srt")
+  loadFile("media/subs/american_dad.srt")
   proccessFile()
   updateSub()
 end
 
 function updateSub()
-  
+  clock = clock + 1000  
   if subs[current] then
     if clock + offset > subs[current].finish then
       current = current + 1
@@ -52,7 +52,6 @@ function updateSub()
   end
   
   showSub()
-  clock = clock + 1000
   event.timer(1000, updateSub)
 end
 
@@ -61,8 +60,8 @@ function showSub()
   if clock + offset >= sub.start and clock + offset <= sub.finish then
     canvas:attrColor('transparent')
     canvas:clear()
-    canvas:attrColor('white')
-    canvas:attrFont('Tiresias', 20, 'bold')
+    canvas:attrColor('yellow')
+    canvas:attrFont('Tiresias', 18, 'bold')
     line1W, line1H = canvas:measureText(sub.line1)
     line2W, line2H = canvas:measureText(sub.line2)
     canvas:drawText(w/2 - line1W/2, 0, sub.line1)
